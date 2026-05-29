@@ -36,19 +36,18 @@ npm run start   # serves the production build on port 4818
 
 ## 3. Deploy to AWS (same as [amazesolutions.in](https://amazesolutions.in/))
 
-Production uses **Next.js static export** → **S3** → **CloudFront** → **Route 53** (no Vercel).
+Production uses **Next.js static export** → **S3 (ap-south-1)** → **CloudFront** → **Route 53** (no Vercel).
 
-| Domain | S3 bucket | CloudFront |
+| Domain | S3 bucket (Mumbai) | CloudFront |
 |---|---|---|
 | `amazesolutions.in` | `amaze-website-prod` | `E3L1NT8ZO08GKK` |
-| `asnmcare.com` | `asnmcare-website-prod` | _(set after first infra setup)_ |
+| `asnmcare.com` | `asnmcare-website-prod` | _(set after `finish-asnmcare-aws.sh`)_ |
 
 ```bash
-npm run build
-# First time: create bucket + CloudFront + ACM cert in us-east-1 (see scripts/README-aws.md)
-export S3_BUCKET=asnmcare-website-prod
-export CLOUDFRONT_DISTRIBUTION_ID=YOUR_DIST_ID
+cp scripts/aws.env.example scripts/aws.env
+export AWS_REGION=ap-south-1
 npm run deploy:aws
+# First time infra: bash scripts/finish-asnmcare-aws.sh (see scripts/README-aws.md)
 ```
 
 **Route 53** for `asnmcare.com` (after CloudFront exists):

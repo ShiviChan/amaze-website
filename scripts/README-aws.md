@@ -1,6 +1,20 @@
-# AWS deploy (S3 + CloudFront)
+# AWS deploy (S3 + CloudFront) — **ap-south-1 (Mumbai)**
 
 Matches the existing **amazesolutions.in** stack:
+
+| Resource | Region |
+|----------|--------|
+| S3 bucket `asnmcare-website-prod` | **ap-south-1** |
+| S3 bucket `amaze-website-prod` | **ap-south-1** |
+| CloudFront (CDN) | Global (origin in Mumbai) |
+| ACM SSL for CloudFront | **us-east-1 only** (AWS requirement) |
+| Route 53 | Global |
+
+```bash
+cp scripts/aws.env.example scripts/aws.env
+# add AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY to aws.env or ~/.aws/credentials
+export AWS_REGION=ap-south-1
+```
 
 - `amaze-website-prod` → CloudFront `E3L1NT8ZO08GKK`
 - Static files from `npm run build` → `out/`

@@ -2,16 +2,22 @@
 # One-time: wait for ACM → CloudFront → Route53 aliases → S3 policy → deploy
 set -euo pipefail
 
-export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-ap-south-1}"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+[[ -f "$SCRIPT_DIR/aws.env" ]] && source "$SCRIPT_DIR/aws.env"
+
+: "${AWS_REGION:=ap-south-1}"
+export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-$AWS_REGION}"
+: "${ACM_CERT_REGION:=us-east-1}"
+
 CERT_ARN="${CERT_ARN:-arn:aws:acm:us-east-1:113204171133:certificate/6ddd7b7c-b3e6-47e1-9a75-b072952bbd4e}"
 OAC_ID="${OAC_ID:-E178FZM7DD1UU3}"
 S3_BUCKET="${S3_BUCKET:-asnmcare-website-prod}"
 HOSTED_ZONE_ID="${HOSTED_ZONE_ID:-Z094069137F2HE9WPRBTY}"
 ORIGIN_DOMAIN="${S3_BUCKET}.s3.ap-south-1.amazonaws.com"
 
-echo "→ Waiting for ACM certificate (us-east-1)…"
+echo "→ Waiting for ACM certificate (${ACM_CERT_REGION})…"
 for _ in $(seq 1 40); do
-  STATUS=$(aws acm describe-certificate --region us-east-1 \
+  STATUS=$(aws acm describe-certificate --region "$ACM_CERT_REGION" \
     --certificate-arn "$CERT_ARN" --query 'Certificate.Status' --output text)
   echo "   ACM status: $STATUS"
   [[ "$STATUS" == "ISSUED" ]] && break
