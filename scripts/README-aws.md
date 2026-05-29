@@ -7,6 +7,33 @@ Matches the existing **amazesolutions.in** stack:
 
 ## asnmcare.com (one-time setup)
 
+### Critical: point the domain to Route 53
+
+`asnmcare.com` currently uses **GoDaddy** nameservers (`ns47/ns48.domaincontrol.com`).  
+The Route 53 hosted zone exists but is **not active** until you update nameservers at GoDaddy to:
+
+- `ns-857.awsdns-43.net`
+- `ns-1285.awsdns-32.org`
+- `ns-239.awsdns-29.com`
+- `ns-1828.awsdns-36.co.uk`
+
+(Same pattern as [amazesolutions.in](https://amazesolutions.in/), which already uses Route 53.)
+
+After NS propagate (usually 15–60 min), ACM validation completes and the site can go live.
+
+**Already done with `shivichan` credentials:**
+- S3 bucket `asnmcare-website-prod` + static site uploaded
+- ACM cert requested (pending validation): `arn:aws:acm:us-east-1:113204171133:certificate/6ddd7b7c-b3e6-47e1-9a75-b072952bbd4e`
+- ACM validation CNAMEs added in Route 53
+- CloudFront OAC: `E178FZM7DD1UU3`
+
+**After NS switch, run:**
+
+```bash
+export AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=...
+bash scripts/finish-asnmcare-aws.sh
+```
+
 1. **ACM** (must be `us-east-1` for CloudFront):
    ```bash
    aws acm request-certificate \
