@@ -1,6 +1,7 @@
 node_modules
 .next
 out
+.env.aws-deploy
 .env*.local
 .DS_Store
 *.log

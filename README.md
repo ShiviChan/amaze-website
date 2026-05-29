@@ -34,18 +34,28 @@ npm run build
 npm run start   # serves the production build on port 4818
 ```
 
-## 3. Deploy to Vercel
+## 3. Deploy to AWS (same as [amazesolutions.in](https://amazesolutions.in/))
 
-1. Push this folder to a new GitHub repo.
-2. On vercel.com → **Add New → Project** → import the repo.
-3. Vercel auto-detects Next.js. Click **Deploy**.
-4. After deploy, add custom domains **`www.asnmcare.com`** and **`asnmcare.com`** under **Project → Settings → Domains**.
+Production uses **Next.js static export** → **S3** → **CloudFront** → **Route 53** (no Vercel).
 
-DNS in **Route 53** (hosted zone `asnmcare.com`):
-- **A** (alias) `@` → Vercel apex target (shown in Vercel domain settings), or **A** `@` → `76.76.21.21`
-- **CNAME** `www` → `cname.vercel-dns.com`
+| Domain | S3 bucket | CloudFront |
+|---|---|---|
+| `amazesolutions.in` | `amaze-website-prod` | `E3L1NT8ZO08GKK` |
+| `asnmcare.com` | `asnmcare-website-prod` | _(set after first infra setup)_ |
 
-Vercel issues SSL automatically (replaces the previous Let's Encrypt cert on the old VPS).
+```bash
+npm run build
+# First time: create bucket + CloudFront + ACM cert in us-east-1 (see scripts/README-aws.md)
+export S3_BUCKET=asnmcare-website-prod
+export CLOUDFRONT_DISTRIBUTION_ID=YOUR_DIST_ID
+npm run deploy:aws
+```
+
+**Route 53** for `asnmcare.com` (after CloudFront exists):
+- **A** (alias) `@` → CloudFront distribution
+- **A** (alias) `www` → same CloudFront distribution
+
+SSL: request an **ACM certificate** in `us-east-1` for `asnmcare.com` + `www.asnmcare.com`, validate via Route 53, attach to CloudFront.
 
 Vercel issues + renews SSL automatically.
 
