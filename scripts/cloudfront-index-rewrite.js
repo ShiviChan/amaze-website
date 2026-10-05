@@ -12,6 +12,9 @@ function handler(event) {
 
   var last = uri.substring(uri.lastIndexOf("/") + 1);
   if (last.indexOf(".") === -1) {
+    // Collapse leading slashes/backslashes so "//evil.com" can't become a
+    // protocol-relative Location (open redirect).
+    var path = "/" + uri.replace(/^[\/\\]+/, "");
     var qs = Object.keys(request.querystring).map(function (k) {
       var v = request.querystring[k];
       return v.value ? k + "=" + v.value : k;
@@ -19,7 +22,7 @@ function handler(event) {
     return {
       statusCode: 301,
       statusDescription: "Moved Permanently",
-      headers: { location: { value: uri + "/" + (qs ? "?" + qs : "") } },
+      headers: { location: { value: path + "/" + (qs ? "?" + qs : "") } },
     };
   }
 
