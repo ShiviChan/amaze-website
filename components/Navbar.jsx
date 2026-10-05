@@ -10,6 +10,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/platform", label: "Platform" },
   { href: "/services", label: "Services" },
+  { href: "/media-marketing", label: "Media And Marketing" },
   { href: "/insights", label: "Insights" },
   { href: "/about", label: "About" },
   { href: "/track", label: "Track" },

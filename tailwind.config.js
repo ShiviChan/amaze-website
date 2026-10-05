@@ -31,6 +31,7 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "Georgia", "serif"],
+        deva: ["var(--font-deva)", "var(--font-display)", "serif"],
       },
       letterSpacing: {
         tightest: "-0.04em",
