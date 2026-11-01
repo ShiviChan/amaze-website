@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -13,20 +13,42 @@ import FadeIn from "./FadeIn";
 
 function Phone({ children }) {
   return (
-    <div className="relative mx-auto w-[250px] h-[510px] rounded-[2.6rem] bg-ink p-2.5 shadow-lift">
+    <div className="relative mx-auto w-[240px] h-[490px] sm:w-[250px] sm:h-[510px] rounded-[2.6rem] bg-ink p-2.5 shadow-lift">
       <div className="absolute left-1/2 top-4 z-20 h-5 w-24 -translate-x-1/2 rounded-full bg-ink" />
       <div className="relative h-full w-full overflow-hidden rounded-[2.1rem] bg-canvas">{children}</div>
     </div>
   );
 }
 
+const LAPTOP_W = 520;
+const LAPTOP_H = 330;
+
+// The laptop screen is drawn at a fixed desktop size and scaled to fit, so on phones it
+// shrinks like a screenshot instead of squashing its layout.
 function Laptop({ children }) {
+  const ref = useRef(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const update = () => setScale(Math.min(1, el.clientWidth / LAPTOP_W));
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
-    <div className="mx-auto w-full max-w-[520px]">
-      <div className="rounded-t-2xl bg-ink p-2.5 pb-0 shadow-lift">
-        <div className="h-[310px] overflow-hidden rounded-t-lg bg-canvas">{children}</div>
+    <div ref={ref} className="mx-auto w-full min-w-0 max-w-[520px]">
+      <div className="overflow-hidden" style={{ height: LAPTOP_H * scale }}>
+        <div style={{ width: LAPTOP_W, transform: `scale(${scale})`, transformOrigin: "top left" }}>
+          <div className="rounded-t-2xl bg-ink p-2.5 pb-0 shadow-lift">
+            <div className="h-[310px] overflow-hidden rounded-t-lg bg-canvas">{children}</div>
+          </div>
+          <div className="mx-auto h-3 w-[108%] -translate-x-[3.7%] rounded-b-2xl bg-slate-300" />
+        </div>
       </div>
-      <div className="mx-auto h-3 w-[108%] -translate-x-[3.7%] rounded-b-2xl bg-slate-300" />
     </div>
   );
 }
@@ -198,25 +220,25 @@ function LabelScreen() {
 
 const demos = [
   {
-    key: "track", label: "Customer Tracking", icon: Smartphone, device: "phone", Screen: TrackingScreen,
+    key: "track", label: "Customer Tracking", short: "Tracking", icon: Smartphone, device: "phone", Screen: TrackingScreen,
     title: "A branded tracking page your customers love",
     body: "Every shipment gets a live, mobile-first tracking page with map view, ETA and one-tap address updates — so fewer customers call your support team.",
     points: ["Live ETA + map", "Self-serve address change", "Fewer WISMO calls"],
   },
   {
-    key: "chat", label: "WhatsApp Cx Bot", icon: MessageCircle, device: "phone", Screen: ChatScreen,
+    key: "chat", label: "WhatsApp Cx Bot", short: "WhatsApp Bot", icon: MessageCircle, device: "phone", Screen: ChatScreen,
     title: "AI support that answers on WhatsApp",
     body: "Our Cx agents resolve where-is-my-order, address fixes and reschedules automatically on WhatsApp and email — and hand off to a human when needed.",
     points: ["Up to 70% tickets auto-resolved", "Hindi + English", "Human handoff built in"],
   },
   {
-    key: "dash", label: "Ops Dashboard", icon: LayoutDashboard, device: "laptop", Screen: DashboardScreen,
+    key: "dash", label: "Ops Dashboard", short: "Dashboard", icon: LayoutDashboard, device: "laptop", Screen: DashboardScreen,
     title: "One dashboard for every shipment",
     body: "Ops, finance and Cx see the same live picture — shipped, delivered, in transit, NDR and RTO — across every courier, with exports and alerts.",
     points: ["Real-time status", "NDR & RTO queues", "Scheduled reports"],
   },
   {
-    key: "label", label: "Label Printing", icon: Printer, device: "laptop", Screen: LabelScreen,
+    key: "label", label: "Label Printing", short: "Labels", icon: Printer, device: "laptop", Screen: LabelScreen,
     title: "Print thousands of labels in one click",
     body: "Bulk-generate courier-compliant labels with your branding. Thermal, A4 and multi-box templates — ready for festive-scale dispatch.",
     points: ["Bulk batches", "Custom templates", "Multi-box shipments"],
@@ -241,16 +263,16 @@ export default function ProductDemos() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div className="mt-10 flex justify-center">
-            <div className="flex max-w-full gap-1 overflow-x-auto rounded-full border border-slate-200/70 bg-white p-1.5 shadow-soft">
+          <div className="mt-8 sm:mt-10 flex justify-center">
+            <div className="grid w-full grid-cols-2 gap-1 rounded-3xl border border-slate-200/70 bg-white p-1.5 shadow-soft sm:flex sm:w-auto sm:rounded-full">
               {demos.map((x, i) => {
                 const Icon = x.icon;
                 return (
                   <button key={x.key} onClick={() => setActive(i)}
-                    className={`relative inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition ${i === active ? "text-white" : "text-slate-600 hover:text-ink"}`}>
+                    className={`relative inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-full px-3 sm:px-4 py-2.5 text-[13px] sm:text-sm font-semibold transition ${i === active ? "text-white" : "text-slate-600 hover:text-ink"}`}>
                     {i === active && <motion.span layoutId="demoTab" className="absolute inset-0 rounded-full bg-ink" transition={{ type: "spring", stiffness: 400, damping: 32 }} />}
                     <Icon size={16} className="relative" />
-                    <span className="relative">{x.label}</span>
+                    <span className="relative whitespace-nowrap"><span className="sm:hidden">{x.short}</span><span className="hidden sm:inline">{x.label}</span></span>
                   </button>
                 );
               })}
@@ -258,15 +280,15 @@ export default function ProductDemos() {
           </div>
         </FadeIn>
 
-        <div className="mt-10 card overflow-hidden">
+        <div className="mt-6 sm:mt-10 card overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div key={d.key}
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="grid lg:grid-cols-2 gap-10 p-6 sm:p-10 md:p-14 items-center">
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 p-5 sm:p-10 md:p-14 items-center">
               <div>
-                <h3 className="font-display font-extrabold text-3xl md:text-4xl tracking-tight text-ink text-balance">{d.title}</h3>
-                <p className="mt-4 text-lg text-slate-600 leading-relaxed">{d.body}</p>
+                <h3 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl tracking-tight text-ink text-balance">{d.title}</h3>
+                <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">{d.body}</p>
                 <ul className="mt-6 space-y-3">
                   {d.points.map((p) => (
                     <li key={p} className="flex items-center gap-3 text-ink font-medium">
@@ -274,9 +296,9 @@ export default function ProductDemos() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/contact" className="btn-primary mt-8">Book a live demo <ArrowUpRight size={18} /></Link>
+                <Link href="/contact" className="btn-primary mt-8 w-full sm:w-auto">Book a live demo <ArrowUpRight size={18} /></Link>
               </div>
-              <div className="relative rounded-[2rem] mesh-bg py-10 px-4">
+              <div className="relative min-w-0 rounded-[2rem] mesh-bg py-8 px-3 sm:py-10 sm:px-4">
                 {d.device === "phone" ? <Phone><Screen /></Phone> : <Laptop><Screen /></Laptop>}
                 {/* little floating badges for flavour */}
                 <div className="absolute left-3 top-4 hidden sm:flex items-center gap-2 rounded-xl bg-white px-3 py-2 shadow-soft text-xs font-semibold text-ink">
