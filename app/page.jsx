@@ -1,12 +1,13 @@
 import Hero from "@/components/Hero";
-import LogisticsScene from "@/components/LogisticsScene";
+import AIPlatform from "@/components/AIPlatform";
+import ProductDemos from "@/components/ProductDemos";
 import LocalAreas from "@/components/LocalAreas";
 import Partners from "@/components/Partners";
 import Stats from "@/components/Stats";
-import AIPlatform from "@/components/AIPlatform";
+import AIInnovations from "@/components/AIInnovations";
 import ServicesGrid from "@/components/ServicesGrid";
 import TrackInline from "@/components/TrackInline";
-import TechStack from "@/components/TechStack";
+import Developers from "@/components/Developers";
 import WhyUs from "@/components/WhyUs";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
@@ -16,14 +17,15 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <LogisticsScene />
+      <AIPlatform />
+      <ProductDemos />
+      <Stats />
+      <AIInnovations />
       <LocalAreas />
       <Partners />
-      <AIPlatform />
-      <Stats />
       <ServicesGrid />
+      <Developers />
       <TrackInline />
-      <TechStack />
       <WhyUs />
       <Testimonials />
       <FAQ />

@@ -3,7 +3,7 @@ import { absoluteUrl } from "@/lib/site";
 export const metadata = {
   title: "Contact Amaze Solutions — Get a Logistics & SaaS Quote",
   description:
-    "Reach Amaze Solutions for 3PL, AI fulfilment SaaS, or careers. Email riteshsr@asnmcare.com, call +91 96760 20374, or visit our Noida HQ (Sector-62, i-Thum Tower).",
+    "Reach Amaze Solutions for 3PL, AI fulfilment SaaS, or careers. Email riteshsr@asnmcare.com or visit our Noida HQ (Sector-62, i-Thum Tower).",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact Amaze Solutions",

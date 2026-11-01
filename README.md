@@ -7,7 +7,7 @@ Built with:
 - **Tailwind CSS**
 - **Framer Motion** for animations
 - **Lucide React** icons
-- **Instrument Serif + Inter** typography (Google Fonts via `next/font`)
+- **Plus Jakarta Sans + Inter** typography (Google Fonts via `next/font`)
 
 ---
 
@@ -168,7 +168,6 @@ Realistic ranking timeline: 3–6 months after deploy for medium-competition ter
 ## Real contact (live everywhere on the site)
 
 - **Email**: riteshsr@asnmcare.com
-- **Phone**: +91 96760 20374
 - **Founder**: Ritesh Sharan Srivastava — Founder & CEO
 - **HQ**: 8th Floor, B-807, i-Thum Tower, Plot No. A-40, Sector-62, Noida, UP — 201301
 - **LinkedIn (company)**: https://www.linkedin.com/company/asnmcare/
@@ -196,10 +195,12 @@ Realistic ranking timeline: 3–6 months after deploy for medium-competition ter
 
 | Token | Value |
 |---|---|
-| Background | `#0A0A0A` (ink) |
+| Background | `#F7F8FC` (canvas) — light theme, Shiprocket-style |
+| Text | `#0F172A` (ink) |
 | Brand red | `#E50914` |
-| Text | `#F7F4EE` (cream) |
-| Display font | Instrument Serif (italics for emphasis) |
+| Brand gradient | `#E50914 → #FF3D7F → #FF6B4A` (`bg-brand-gradient`, `.text-gradient`) |
+| Pastel mesh | `.mesh-bg` (heroes), `.mesh-soft` (sections) in `globals.css` |
+| Display font | Plus Jakarta Sans (bold/extrabold headings) |
 | Body font | Inter |
 | Motion easing | `[0.22, 1, 0.36, 1]` for entrances |
 | Default dev port | 4818 |

@@ -34,24 +34,24 @@ export default function ViewfinderHero() {
   }, [reduce]);
 
   return (
-    <section className="relative pt-10 pb-20 md:pb-28 overflow-hidden">
+    <section className="relative -mt-24 pt-36 pb-20 md:pb-28 overflow-hidden mesh-bg">
       <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
         <div className="lg:col-span-6">
           <div className="flex items-center gap-3 mb-8">
             <Image src="/media/newspath-logo.jpg" alt="Newspath Bharat logo" width={120} height={50}
-              className="h-10 w-auto rounded-md bg-white px-1.5" priority />
-            <span className="text-sm text-white/60">Media and marketing, through Newspath Bharat</span>
+              className="h-10 w-auto rounded-md bg-white px-1.5 shadow-soft" priority />
+            <span className="text-sm font-medium text-slate-600">Media and marketing, through Newspath Bharat</span>
           </div>
 
-          <h1 className="font-deva font-bold text-[13vw] sm:text-7xl xl:text-[5.6rem] leading-[1.2] tracking-normal text-white">
+          <h1 className="font-deva font-bold text-[13vw] sm:text-7xl xl:text-[5.6rem] leading-[1.2] tracking-normal text-ink">
             ख़बर। जनहित।
-            <span className="block text-brand">ज़मीनी हक़ीक़त।</span>
+            <span className="block text-gradient pb-2">ज़मीनी हक़ीक़त।</span>
           </h1>
-          <p className="mt-5 font-display text-2xl md:text-3xl text-white/75">
+          <p className="mt-5 font-display font-bold text-2xl md:text-3xl text-slate-700">
             News, public interest and ground reality, in Hindi.
           </p>
 
-          <p className="mt-8 max-w-xl text-lg text-white/65 leading-relaxed">
+          <p className="mt-8 max-w-xl text-lg text-slate-600 leading-relaxed">
             Newspath Bharat is a Hindi digital news network with a community of 6,00,000+ across YouTube, Facebook and Instagram, most of it in Tier-2 and Tier-3 India. Brands reach that audience through our reports, podcasts and sponsored campaigns.
           </p>
 
@@ -71,7 +71,7 @@ export default function ViewfinderHero() {
             initial={reduce ? false : { opacity: 0, scale: 1.04, filter: "blur(10px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.1, ease }}
-            className="relative aspect-[3/2] rounded-sm overflow-hidden bg-ink-800 ring-1 ring-white/10"
+            className="relative aspect-[3/2] rounded-[2rem] overflow-hidden bg-slate-200 shadow-lift ring-4 ring-white"
           >
             <Image src="/media/lamp-lighting.jpg" alt="Guests and senior police officers lighting the ceremonial lamp on stage"
               fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />

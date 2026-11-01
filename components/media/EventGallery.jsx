@@ -49,7 +49,7 @@ export default function EventGallery() {
         {photos.map((p, i) => (
           <button key={p.src} type="button"
             onClick={(e) => { lastTrigger.current = e.currentTarget; setOpen(i); }}
-            className={`group relative overflow-hidden rounded-sm bg-ink-800 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand ${p.cls} ${i === 4 ? "sm:col-span-2" : ""}`}
+            className={`group relative overflow-hidden rounded-3xl bg-slate-200 shadow-soft hover:shadow-lift transition-shadow text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand ${p.cls} ${i === 4 ? "sm:col-span-2" : ""}`}
             aria-label={`Open photo: ${p.caption}`}>
             <Image src={p.src} alt={p.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"
               className={`object-cover ${p.pos} transition-transform duration-700 group-hover:scale-[1.03]`} />

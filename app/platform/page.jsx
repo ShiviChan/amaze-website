@@ -18,28 +18,28 @@ const features = [
   { icon: TrendingDown, name: "AI RTO Reduction", body: "Machine-learning scores every order at checkout. Flags risky addresses, nudges COD-to-prepaid, cuts returns up to 35%.", points: ["Address quality scoring", "COD risk prediction", "Auto verification flows"] },
   { icon: MessageSquareText, name: "Cx Automation Bots", body: "AI agents on WhatsApp and email handle WISMO, address corrections, reschedules and refund triage. Deflect 70% of tickets.", points: ["WhatsApp + email", "Multilingual", "Human handoff built-in"] },
   { icon: Webhook, name: "Multi-Courier Aggregator", body: "Clinship plugs 15+ courier partners through one API. Best-rate routing, fallback failover, unified COD reconciliation.", points: ["15+ couriers, 1 API", "Best-rate routing", "Reconciliation built-in"] },
-  { icon: BarChart3, name: "BI & Reporting", body: "Pre-built Metabase dashboards plus custom reports. Cost-per-shipment, courier-wise NDR, RTO trends — all in one place.", points: ["Pre-built dashboards", "Scheduled exports", "Custom KPIs"] },
+  { icon: BarChart3, name: "BI & Reporting", body: "Pre-built dashboards plus custom reports. Cost-per-shipment, courier-wise NDR, RTO trends — all in one place.", points: ["Pre-built dashboards", "Scheduled exports", "Custom KPIs"] },
 ];
 
 const why = [
   { icon: Code2, t: "Developer-friendly", b: "Modern REST APIs, SDKs in Node / Python / PHP, sandbox keys in 60s." },
   { icon: Shield, t: "Enterprise-secure", b: "Encrypted at rest & in transit, SOC-aligned controls, role-based access." },
-  { icon: Brain, t: "Built with AI", b: "Production ML for RTO, NLP for address parsing, LLMs for Cx — running on AWS." },
+  { icon: Brain, t: "Built with AI", b: "Production ML for RTO, NLP for address parsing, LLMs for Cx — running in production." },
 ];
 
 export default function PlatformPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "Platform", href: "/platform" }]} />
-      <section className="relative pt-12 pb-20 overflow-hidden grid-bg">
+      <section className="relative -mt-24 pt-36 pb-20 overflow-hidden mesh-bg">
         <div className="absolute inset-0 bg-radial-fade pointer-events-none" />
         <div className="container-x relative z-10">
           <FadeIn>
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-1.5 text-xs uppercase tracking-[0.2em] text-brand mb-8">
+            <div className="eyebrow mb-8">
               <Brain size={12} /> Clinship Platform · AI-powered SaaS
             </div>
           </FadeIn>
-          <h1 className="font-display text-[12vw] md:text-[7.5vw] leading-[0.95] tracking-tightest text-balance max-w-5xl">
+          <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tightest text-balance max-w-5xl">
             {"The operating system".split(" ").map((w, i) => (
               <span key={i} className="inline-block overflow-hidden mr-[0.2em]">
                 <motion.span initial={{ y: "110%" }} animate={{ y: "0%" }}
@@ -49,12 +49,12 @@ export default function PlatformPage() {
             ))}
             <br />
             <motion.span initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }} className="italic text-brand">
+              transition={{ delay: 0.5, duration: 0.8 }} className="text-gradient">
               for fulfilment.
             </motion.span>
           </h1>
           <FadeIn delay={0.6}>
-            <p className="mt-12 max-w-2xl text-xl text-white/70 leading-relaxed">
+            <p className="mt-12 max-w-2xl text-xl text-slate-600 leading-relaxed">
               Clinship is Amaze's AI-powered SaaS suite. Everything D2C and enterprise brands need to print labels, ship across couriers, track orders, reduce RTO and automate Cx — under one roof, one API, one dashboard.
             </p>
           </FadeIn>
@@ -67,7 +67,7 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      <section className="py-16 border-y border-white/10 bg-ink-800/60">
+      <section className="py-16 border-y border-slate-200 bg-white">
         <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { v: 35, suffix: "%", label: "RTO reduction" },
@@ -76,10 +76,10 @@ export default function PlatformPage() {
             { v: 99.9, suffix: "%", label: "Platform uptime", format: (x) => x.toFixed(1) },
           ].map((s) => (
             <FadeIn key={s.label}>
-              <div className="font-display text-5xl md:text-6xl text-white">
+              <div className="font-display font-extrabold text-5xl md:text-6xl text-ink">
                 <AnimatedCounter to={s.v} suffix={s.suffix} format={s.format} />
               </div>
-              <div className="mt-3 text-sm text-white/55">{s.label}</div>
+              <div className="mt-3 text-sm text-slate-500">{s.label}</div>
             </FadeIn>
           ))}
         </div>
@@ -89,8 +89,8 @@ export default function PlatformPage() {
         <div className="container-x">
           <FadeIn>
             <div className="eyebrow mb-6">What's inside</div>
-            <h2 className="font-display text-5xl md:text-6xl tracking-tight max-w-3xl text-balance leading-[0.95]">
-              Six products. <span className="italic text-brand">One platform.</span>
+            <h2 className="font-display font-extrabold text-5xl md:text-6xl tracking-tight max-w-3xl text-balance leading-[1.05]">
+              Six products. <span className="text-gradient">One platform.</span>
             </h2>
           </FadeIn>
           <div className="mt-16 grid md:grid-cols-2 gap-5">
@@ -99,15 +99,15 @@ export default function PlatformPage() {
               return (
                 <FadeIn key={f.name} delay={(i % 2) * 0.1}>
                   <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="group relative h-full p-8 rounded-2xl glass overflow-hidden">
+                    className="group relative h-full p-8 rounded-3xl glass overflow-hidden">
                     <div className="absolute -top-20 -right-20 h-48 w-48 rounded-full bg-brand/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="relative">
                       <div className="h-12 w-12 rounded-xl bg-brand/10 border border-brand/30 grid place-items-center text-brand group-hover:bg-brand group-hover:text-white transition-colors mb-6">
                         <Icon size={22} />
                       </div>
-                      <h3 className="text-2xl font-medium text-white mb-3">{f.name}</h3>
-                      <p className="text-white/60 leading-relaxed mb-6">{f.body}</p>
-                      <ul className="space-y-2 text-sm text-white/70">
+                      <h3 className="text-2xl font-medium text-ink mb-3">{f.name}</h3>
+                      <p className="text-slate-600 leading-relaxed mb-6">{f.body}</p>
+                      <ul className="space-y-2 text-sm text-slate-600">
                         {f.points.map((p) => (
                           <li key={p} className="flex items-center gap-2">
                             <span className="h-1 w-1 rounded-full bg-brand" />{p}
@@ -123,16 +123,16 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      <section className="py-20 border-y border-white/10">
+      <section className="py-20 border-y border-slate-200">
         <div className="container-x grid md:grid-cols-3 gap-5">
           {why.map((w, i) => {
             const Icon = w.icon;
             return (
               <FadeIn key={w.t} delay={i * 0.1}>
-                <div className="p-8 rounded-2xl border border-white/10 hover:border-brand/40 transition group h-full">
+                <div className="p-8 rounded-3xl border border-slate-200/70 bg-white shadow-soft hover:border-brand/40 transition group h-full">
                   <Icon className="text-brand mb-6 group-hover:scale-110 transition" size={28} />
-                  <h3 className="text-xl font-medium text-white mb-3">{w.t}</h3>
-                  <p className="text-white/60 leading-relaxed">{w.b}</p>
+                  <h3 className="text-xl font-medium text-ink mb-3">{w.t}</h3>
+                  <p className="text-slate-600 leading-relaxed">{w.b}</p>
                 </div>
               </FadeIn>
             );

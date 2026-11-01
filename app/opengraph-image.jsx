@@ -47,7 +47,7 @@ export default async function OG() {
             { v: "50+", l: "Cities" },
             { v: "800+", l: "Professionals" },
             { v: "1.5M+", l: "Parcels/mo" },
-            { v: "AWS", l: "Infrastructure" },
+            { v: "99.9%", l: "Uptime" },
           ].map((s) => (
             <div key={s.l} style={{ display: "flex", flexDirection: "column" }}>
               <div style={{ fontSize: 40, fontWeight: 800, color: "white" }}>{s.v}</div>

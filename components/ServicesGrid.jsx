@@ -18,40 +18,39 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <section id="services" className="relative py-28">
+    <section id="services" className="relative py-24 md:py-28 bg-white">
       <div className="container-x">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14">
           <FadeIn>
             <div className="eyebrow mb-6">3PL Services</div>
-            <h2 className="font-display text-5xl md:text-7xl tracking-tight max-w-3xl text-balance leading-[0.95]">
-              Every shipment problem,<br />
-              <span className="italic text-brand">solved end-to-end.</span>
+            <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight max-w-3xl text-ink text-balance leading-[1.05]">
+              Every shipment problem, <span className="text-gradient">solved end-to-end.</span>
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <Link href="/services" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-brand transition">
+            <Link href="/services" className="btn-ghost text-sm">
               See all services <ArrowUpRight size={14} />
             </Link>
           </FadeIn>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
               <FadeIn key={s.title} delay={(i % 4) * 0.08}>
                 <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group relative h-full p-6 rounded-2xl glass overflow-hidden">
-                  <div className="absolute -top-20 -right-20 h-48 w-48 rounded-full bg-brand/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  className="group relative h-full p-6 rounded-3xl border border-slate-200/70 bg-canvas-50 hover:bg-white hover:shadow-lift transition-shadow overflow-hidden">
+                  <div className="absolute -top-20 -right-20 h-48 w-48 rounded-full bg-rose/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">
                     <div className="flex items-start justify-between mb-6">
-                      <div className="h-11 w-11 rounded-xl bg-brand/10 border border-brand/30 grid place-items-center text-brand group-hover:bg-brand group-hover:text-white transition-colors">
+                      <div className="h-11 w-11 rounded-2xl bg-white border border-slate-200 grid place-items-center text-brand shadow-soft group-hover:bg-brand-gradient group-hover:text-white group-hover:border-transparent transition-colors">
                         <Icon size={20} />
                       </div>
-                      <span className="text-[9px] uppercase tracking-[0.2em] text-white/40 border border-white/15 rounded-full px-2 py-0.5">{s.tag}</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-500 bg-white border border-slate-200 rounded-full px-2 py-0.5">{s.tag}</span>
                     </div>
-                    <h3 className="text-xl font-medium text-white mb-2">{s.title}</h3>
-                    <p className="text-white/55 text-sm leading-relaxed">{s.desc}</p>
+                    <h3 className="text-lg font-bold text-ink mb-2">{s.title}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">{s.desc}</p>
                   </div>
                 </motion.div>
               </FadeIn>

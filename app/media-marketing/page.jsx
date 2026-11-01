@@ -8,9 +8,9 @@ import { CAMPAIGN_HREF } from "@/components/media/links";
 
 const reach = [
   { label: "Newspath Bharat on YouTube", value: 200000, shown: "2,00,000+", color: "bg-brand" },
-  { label: "Coach Digvijay on Facebook", value: 200000, shown: "2,00,000+", color: "bg-brand-300" },
-  { label: "Coach Digvijay on Instagram", value: 155000, shown: "1,55,000+", color: "bg-cream" },
-  { label: "Newspath Bharat on Facebook", value: 50000, shown: "50,000+", color: "bg-brand-700" },
+  { label: "Coach Digvijay on Facebook", value: 200000, shown: "2,00,000+", color: "bg-rose" },
+  { label: "Coach Digvijay on Instagram", value: 155000, shown: "1,55,000+", color: "bg-violet" },
+  { label: "Newspath Bharat on Facebook", value: 50000, shown: "50,000+", color: "bg-coral" },
 ];
 const reachTotal = reach.reduce((s, r) => s + r.value, 0);
 
@@ -72,18 +72,19 @@ export default function MediaMarketingPage() {
       <ViewfinderHero />
 
       {/* Reach */}
-      <section className="py-24 border-y border-white/10 bg-ink-800/50">
+      <section className="py-20 md:py-24 mesh-soft">
         <div className="container-x">
-          <div className="grid lg:grid-cols-12 gap-10 items-end">
+          <div className="card p-8 md:p-12 grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-5">
-              <div className="font-display text-7xl md:text-8xl text-white tracking-tight tabular-nums">6,00,000+</div>
-              <p className="mt-3 text-lg text-white/65">people follow Newspath Bharat and its editor, Coach Digvijay, across three platforms.</p>
+              <div className="eyebrow mb-5">Community reach</div>
+              <div className="font-display font-extrabold text-6xl md:text-7xl text-gradient tracking-tight tabular-nums">6,00,000+</div>
+              <p className="mt-3 text-lg text-slate-600">people follow Newspath Bharat and its editor, Coach Digvijay, across three platforms.</p>
             </div>
             <div className="lg:col-span-7">
-              <div className="flex h-4 w-full overflow-hidden rounded-full bg-white/10" role="img"
+              <div className="flex h-4 w-full overflow-hidden rounded-full bg-slate-100" role="img"
                 aria-label="Audience split: 2,00,000 YouTube, 2,00,000 Facebook, 1,55,000 Instagram, 50,000 Facebook">
                 {reach.map((r) => (
-                  <div key={r.label} className={`${r.color} h-full border-r-2 border-ink-800 last:border-r-0`}
+                  <div key={r.label} className={`${r.color} h-full border-r-2 border-white last:border-r-0`}
                     style={{ width: `${(r.value / reachTotal) * 100}%` }} />
                 ))}
               </div>
@@ -91,8 +92,8 @@ export default function MediaMarketingPage() {
                 {reach.map((r) => (
                   <div key={r.label} className="flex items-baseline gap-3">
                     <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${r.color} translate-y-[-1px]`} aria-hidden="true" />
-                    <dt className="text-white/60 text-sm flex-1">{r.label}</dt>
-                    <dd className="text-white font-medium tabular-nums">{r.shown}</dd>
+                    <dt className="text-slate-600 text-sm flex-1">{r.label}</dt>
+                    <dd className="text-ink font-bold tabular-nums">{r.shown}</dd>
                   </div>
                 ))}
               </dl>
@@ -105,10 +106,10 @@ export default function MediaMarketingPage() {
       <section className="py-24 md:py-28">
         <div className="container-x">
           <div className="grid md:grid-cols-12 gap-6 items-end mb-12">
-            <h2 className="md:col-span-7 font-display text-5xl md:text-6xl tracking-tight leading-[0.95] text-balance">
+            <h2 className="md:col-span-7 font-display font-extrabold text-4xl md:text-6xl tracking-tight leading-[1.05] text-ink text-balance">
               On stage, with the community
             </h2>
-            <p className="md:col-span-5 text-white/60 leading-relaxed">
+            <p className="md:col-span-5 text-slate-600 leading-relaxed">
               From Amaze Solutions' 11th foundation day in Noida: awards for employees and partners, the lamp lighting with chief guests, and a classical dance performance. Tap any photo to see it full size.
             </p>
           </div>
@@ -121,21 +122,21 @@ export default function MediaMarketingPage() {
         <div className="container-x grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <a href="/media/navodaya-times-clipping.jpg" target="_blank" rel="noopener noreferrer"
             className="lg:col-span-5 block group" aria-label="Open the Navodaya Times clipping full size">
-            <div className="relative mx-auto max-w-sm rotate-[-1.5deg] group-hover:rotate-0 transition-transform duration-500 bg-white p-2 shadow-[0_30px_80px_-20px_rgba(229,9,20,0.45)]">
+            <div className="relative mx-auto max-w-sm rotate-[-1.5deg] group-hover:rotate-0 transition-transform duration-500 bg-white p-2 rounded-lg shadow-lift">
               <Image src="/media/navodaya-times-clipping.jpg" alt="Navodaya Times clipping: Amaze Solutions honours employees on its 11th foundation day"
                 width={460} height={818} sizes="(max-width: 1024px) 90vw, 384px" className="w-full h-auto" />
             </div>
           </a>
           <div className="lg:col-span-7">
-            <p className="text-sm text-brand">In the news</p>
-            <h2 className="mt-4 font-deva font-bold text-4xl md:text-5xl leading-[1.35] text-white text-balance">
+            <div className="eyebrow">In the news</div>
+            <h2 className="mt-4 font-deva font-bold text-4xl md:text-5xl leading-[1.35] text-ink text-balance">
               कर्मचारियों को 11वें स्थापना दिवस पर किया सम्मानित
             </h2>
-            <p className="mt-4 text-white/50">Navodaya Times, Noida edition, page 1, 5 October 2026</p>
-            <p className="mt-8 max-w-2xl text-lg text-white/70 leading-relaxed">
+            <p className="mt-4 text-slate-500">Navodaya Times, Noida edition, page 1, 5 October 2026</p>
+            <p className="mt-8 max-w-2xl text-lg text-slate-600 leading-relaxed">
               Amaze Solutions honoured its employees, leadership team and partners on its 11th foundation day. The chief guests were Dr. Rajeev Narayan Mishra, Additional Commissioner of the Gautam Buddh Nagar Police Commissionerate, DCP Traffic Dr. Praveen Ranjan, and Anand Prakash Gupta, Director of Home and Urban Affairs at the Ministry of Home Affairs.
             </p>
-            <p className="mt-4 max-w-2xl text-white/55 leading-relaxed">
+            <p className="mt-4 max-w-2xl text-slate-500 leading-relaxed">
               Founder and director Ritesh Srivastava, director Meera Nigam, co-founder Piyush Srivastava, CEO Ravi Kaul and Newspath editor-in-chief Digvijay Singh attended with the company's leadership team.
             </p>
           </div>
@@ -143,33 +144,34 @@ export default function MediaMarketingPage() {
       </section>
 
       {/* Podcast */}
-      <section className="py-24 md:py-28 border-y border-white/10">
+      <section className="py-24 md:py-28 bg-white">
         <div className="container-x">
           <div className="max-w-2xl">
-            <h2 className="font-display text-5xl md:text-6xl tracking-tight leading-[0.95] text-balance">The Newspath Bharat Podcast</h2>
-            <p className="mt-5 text-lg text-white/65 leading-relaxed">
+            <div className="eyebrow mb-6"><Play size={12} /> Podcast</div>
+            <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight leading-[1.05] text-ink text-balance">The Newspath Bharat Podcast</h2>
+            <p className="mt-5 text-lg text-slate-600 leading-relaxed">
               Long conversations with people from policing, defence, law, medicine, literature and public life.
             </p>
           </div>
 
           <FadeIn>
             <a href={yt(featured.id)} target="_blank" rel="noopener noreferrer"
-              className="group mt-12 grid lg:grid-cols-12 gap-0 rounded-sm overflow-hidden ring-1 ring-white/10 hover:ring-brand/60 transition">
-              <div className="relative lg:col-span-8 aspect-video bg-ink-800">
+              className="group mt-12 grid lg:grid-cols-12 gap-0 rounded-[2rem] overflow-hidden bg-white border border-slate-200/70 shadow-soft hover:shadow-lift transition">
+              <div className="relative lg:col-span-8 aspect-video bg-slate-200">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={thumb(featured.id)} alt={`Podcast episode with ${featured.name}`} loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover" />
                 <span className="absolute bottom-5 left-5 md:bottom-6 md:left-6">
-                  <span className="h-16 w-16 md:h-20 md:w-20 rounded-full bg-brand grid place-items-center text-white shadow-[0_0_60px_-5px_rgba(229,9,20,0.8)] group-hover:scale-110 transition-transform">
+                  <span className="h-16 w-16 md:h-20 md:w-20 rounded-full bg-brand-gradient grid place-items-center text-white shadow-brand group-hover:scale-110 transition-transform">
                     <Play size={28} className="ml-1" fill="currentColor" />
                   </span>
                 </span>
               </div>
-              <div className="lg:col-span-4 p-8 md:p-10 flex flex-col justify-end bg-ink-800/60">
-                <span className="text-sm text-brand">Latest episode</span>
-                <h3 className="mt-3 font-display text-4xl md:text-5xl text-white leading-tight">{featured.name}</h3>
-                <p className="mt-3 text-white/65">{featured.role}</p>
-                <span className="mt-8 inline-flex items-center gap-2 text-sm text-white group-hover:text-brand transition">
+              <div className="lg:col-span-4 p-8 md:p-10 flex flex-col justify-end mesh-soft">
+                <span className="text-sm font-semibold text-brand">Latest episode</span>
+                <h3 className="mt-3 font-display font-extrabold text-3xl md:text-4xl text-ink leading-tight">{featured.name}</h3>
+                <p className="mt-3 text-slate-600">{featured.role}</p>
+                <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink group-hover:underline">
                   Watch on YouTube <ArrowUpRight size={14} />
                 </span>
               </div>
@@ -180,7 +182,7 @@ export default function MediaMarketingPage() {
             {episodes.map((e) => (
               <li key={e.id}>
                 <a href={yt(e.id)} target="_blank" rel="noopener noreferrer" className="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand">
-                  <div className="relative aspect-video overflow-hidden rounded-sm bg-ink-800 ring-1 ring-white/10">
+                  <div className="relative aspect-video overflow-hidden rounded-2xl bg-slate-200 shadow-soft">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={thumb(e.id)} alt={`Podcast episode with ${e.name}`} loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -188,8 +190,8 @@ export default function MediaMarketingPage() {
                       <Play size={14} className="ml-0.5" fill="currentColor" />
                     </span>
                   </div>
-                  <h3 className="mt-4 text-lg font-medium text-white group-hover:text-brand transition">{e.name}</h3>
-                  <p className="mt-1 text-sm text-white/55">{e.role}</p>
+                  <h3 className="mt-4 text-lg font-bold text-ink group-hover:underline">{e.name}</h3>
+                  <p className="mt-1 text-sm text-slate-500">{e.role}</p>
                 </a>
               </li>
             ))}
@@ -201,26 +203,26 @@ export default function MediaMarketingPage() {
       <section className="py-24 md:py-28">
         <div className="container-x">
           <div className="grid md:grid-cols-12 gap-6 items-end mb-14">
-            <h2 className="md:col-span-7 font-display text-5xl md:text-6xl tracking-tight leading-[0.95] text-balance">
+            <h2 className="md:col-span-7 font-display font-extrabold text-4xl md:text-6xl tracking-tight leading-[1.05] text-ink text-balance">
               Five channels, one network
             </h2>
-            <p className="md:col-span-5 text-white/60 leading-relaxed">
+            <p className="md:col-span-5 text-slate-600 leading-relaxed">
               Each channel has its own audience, so a campaign can go to farmers, car buyers or crime-news viewers without paying for everyone else.
             </p>
           </div>
 
-          <div className="divide-y divide-white/10 border-y border-white/10">
+          <div className="space-y-4">
             {channels.map((c) => (
-              <div key={c.name} className="grid grid-cols-[64px_1fr] md:grid-cols-[96px_1fr_auto] gap-x-5 md:gap-x-8 gap-y-4 items-center py-7">
-                <div className={`relative overflow-hidden bg-white ${c.wide ? "h-12 w-16 md:h-16 md:w-24 rounded-md" : "h-16 w-16 md:h-24 md:w-24 rounded-full ring-1 ring-white/15"}`}>
+              <div key={c.name} className="grid grid-cols-[64px_1fr] md:grid-cols-[96px_1fr_auto] gap-x-5 md:gap-x-8 gap-y-4 items-center card p-5 md:p-7 hover:shadow-lift transition-shadow">
+                <div className={`relative overflow-hidden bg-white ${c.wide ? "h-12 w-16 md:h-16 md:w-24 rounded-md" : "h-16 w-16 md:h-24 md:w-24 rounded-full ring-1 ring-slate-200"}`}>
                   <Image src={c.logo} alt={`${c.name} logo`} fill sizes="96px" className={c.wide ? "object-contain p-1" : "object-cover"} />
                 </div>
                 <div>
                   <div className="flex flex-wrap items-baseline gap-x-3">
-                    <h3 className="font-display text-3xl md:text-4xl text-white">{c.name}</h3>
-                    <span className="text-sm text-brand">{c.topic}</span>
+                    <h3 className="font-display font-extrabold text-2xl md:text-3xl text-ink">{c.name}</h3>
+                    <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand">{c.topic}</span>
                   </div>
-                  <p className="mt-1.5 text-white/60 max-w-xl">{c.body}</p>
+                  <p className="mt-1.5 text-slate-600 max-w-xl">{c.body}</p>
                 </div>
                 <div className="col-span-2 md:col-span-1 flex gap-2 md:justify-end">
                   {c.links.map((l) => {
@@ -228,7 +230,7 @@ export default function MediaMarketingPage() {
                     return (
                       <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer"
                         aria-label={`${c.name} on ${l.label}`}
-                        className="h-11 w-11 rounded-full border border-white/15 grid place-items-center text-white/75 hover:bg-brand hover:border-brand hover:text-white transition">
+                        className="h-11 w-11 rounded-full border border-slate-200 bg-white shadow-soft grid place-items-center text-slate-600 hover:bg-brand-gradient hover:border-transparent hover:text-white transition">
                         <Icon size={17} />
                       </a>
                     );
@@ -241,29 +243,28 @@ export default function MediaMarketingPage() {
       </section>
 
       {/* Editor */}
-      <section className="py-24 md:py-28 border-t border-white/10">
+      <section className="py-24 md:py-28 mesh-soft">
         <div className="container-x grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-6">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-black ring-1 ring-white/10">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-slate-200 shadow-lift">
               <Image src="/media/coach-digvijay.jpg" alt="Coach Digvijay, Editor-in-Chief of Newspath Bharat"
                 fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover object-[50%_30%]" />
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black to-transparent" />
-            </div>
+                          </div>
           </div>
           <div className="lg:col-span-6">
-            <p className="text-sm text-brand">Editor-in-Chief, Newspath Bharat</p>
-            <h2 className="mt-4 font-display text-6xl md:text-7xl tracking-tight leading-[0.95] text-white">Coach Digvijay</h2>
-            <p className="mt-8 max-w-xl text-lg text-white/70 leading-relaxed">
+            <div className="eyebrow">Editor-in-Chief, Newspath Bharat</div>
+            <h2 className="mt-5 font-display font-extrabold text-5xl md:text-6xl tracking-tight leading-[1.05] text-ink">Coach <span className="text-gradient">Digvijay</span></h2>
+            <p className="mt-8 max-w-xl text-lg text-slate-600 leading-relaxed">
               Media strategist, entrepreneur and communication professional with long experience in digital media leadership and content strategy. He hosts the Newspath Bharat Podcast, and his own pages take Newspath stories to people who follow leadership, motivation and current affairs.
             </p>
             <dl className="mt-10 grid grid-cols-2 gap-6 max-w-md">
-              <div className="flex flex-col-reverse border-t border-brand/50 pt-4">
-                <dt className="mt-1 text-sm text-white/55">followers on Facebook</dt>
-                <dd className="font-display text-4xl text-white tabular-nums">2,00,000+</dd>
+              <div className="flex flex-col-reverse card p-5">
+                <dt className="mt-1 text-sm text-slate-500">followers on Facebook</dt>
+                <dd className="font-display font-extrabold text-3xl text-ink tabular-nums">2,00,000+</dd>
               </div>
-              <div className="flex flex-col-reverse border-t border-brand/50 pt-4">
-                <dt className="mt-1 text-sm text-white/55">followers on Instagram</dt>
-                <dd className="font-display text-4xl text-white tabular-nums">1,55,000+</dd>
+              <div className="flex flex-col-reverse card p-5">
+                <dt className="mt-1 text-sm text-slate-500">followers on Instagram</dt>
+                <dd className="font-display font-extrabold text-3xl text-ink tabular-nums">1,55,000+</dd>
               </div>
             </dl>
           </div>
@@ -271,27 +272,30 @@ export default function MediaMarketingPage() {
       </section>
 
       {/* For brands + people */}
-      <section className="py-24 md:py-28 border-y border-white/10 bg-ink-800/50">
+      <section className="py-24 md:py-28 bg-white">
         <div className="container-x grid lg:grid-cols-12 gap-16">
           <div className="lg:col-span-7">
-            <h2 className="font-display text-5xl md:text-6xl tracking-tight leading-[0.95] text-balance">What brands can do with us</h2>
-            <dl className="mt-12 grid sm:grid-cols-2 gap-x-10 gap-y-8">
+            <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight leading-[1.05] text-ink text-balance">What brands can do with us</h2>
+            <dl className="mt-12 grid sm:grid-cols-2 gap-4">
               {offers.map((o) => (
-                <div key={o.t} className="border-t border-brand/50 pt-4">
-                  <dt className="text-lg font-medium text-white">{o.t}</dt>
-                  <dd className="mt-1.5 text-white/60 leading-relaxed">{o.b}</dd>
+                <div key={o.t} className="rounded-3xl border border-slate-200/70 bg-canvas-50 p-6 hover:bg-white hover:shadow-lift transition">
+                  <dt className="text-lg font-bold text-ink">{o.t}</dt>
+                  <dd className="mt-1.5 text-slate-600 leading-relaxed">{o.b}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
           <div className="lg:col-span-5">
-            <h2 className="font-display text-4xl tracking-tight">Directors</h2>
-            <ul className="mt-8 space-y-5">
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl tracking-tight text-ink">Directors</h2>
+            <ul className="mt-8 space-y-3">
               {directors.map((d) => (
-                <li key={d.name} className="border-t border-white/10 pt-5">
-                  <div className="text-white font-medium">{d.name}</div>
-                  <div className="mt-1 text-sm text-white/50">{d.note}</div>
+                <li key={d.name} className="card p-5 flex items-center gap-4">
+                  <div className="h-11 w-11 shrink-0 rounded-full bg-brand-gradient grid place-items-center text-white font-display font-bold">{d.name[0]}</div>
+                  <div>
+                  <div className="text-ink font-bold">{d.name}</div>
+                  <div className="mt-1 text-sm text-slate-500">{d.note}</div>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -302,35 +306,34 @@ export default function MediaMarketingPage() {
       {/* Contact */}
       <section className="py-24 md:py-32">
         <div className="container-x">
-          <div className="relative overflow-hidden rounded-sm ring-1 ring-white/10 grid lg:grid-cols-2">
+          <div className="relative overflow-hidden rounded-[2rem] shadow-lift grid lg:grid-cols-2">
             <div className="relative min-h-[280px] lg:min-h-full">
               <Image src="/media/hosts-on-stage.jpg" alt="Two hosts in white suits on stage" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover object-[60%_30%]" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-ink/80 hidden lg:block" />
-            </div>
-            <div className="p-8 md:p-14 bg-ink-800">
+                          </div>
+            <div className="p-8 md:p-14 text-white" style={{ backgroundImage: "linear-gradient(120deg, #E50914 0%, #FF3D7F 50%, #7B5CFF 100%)" }}>
               <p className="font-deva text-2xl md:text-3xl leading-[1.6] text-white">
                 हमने अपनी बात रख दी है — अब अगला कदम आपकी ओर से है।
               </p>
-              <p className="mt-3 text-white/60">We've said our piece. The next step is yours.</p>
+              <p className="mt-3 text-white/80">We've said our piece. The next step is yours.</p>
 
-              <ul className="mt-10 space-y-4 text-white/80">
-                <li className="flex gap-3"><MapPin size={18} className="text-brand shrink-0 mt-0.5" />
+              <ul className="mt-10 space-y-4 text-white/90">
+                <li className="flex gap-3"><MapPin size={18} className="text-white shrink-0 mt-0.5" />
                   B-807, i-Thum Tower, near Noida Electronic City Metro (Gate 3), Sector 62, Noida</li>
-                <li className="flex gap-3"><Phone size={18} className="text-brand shrink-0 mt-0.5" />
-                  <span><a href="tel:+919990976501" className="hover:text-brand transition">+91 99909 76501</a>
-                    <span className="text-white/30 mx-2">/</span>
-                    <a href="tel:+919582415452" className="hover:text-brand transition">+91 95824 15452</a></span></li>
-                <li className="flex gap-3"><Mail size={18} className="text-brand shrink-0 mt-0.5" />
-                  <a href="mailto:newspathh@gmail.com" className="hover:text-brand transition">newspathh@gmail.com</a></li>
-                <li className="flex gap-3"><Globe size={18} className="text-brand shrink-0 mt-0.5" />
-                  <a href="https://www.newspathh.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand transition">www.newspathh.com</a></li>
+                <li className="flex gap-3"><Phone size={18} className="text-white shrink-0 mt-0.5" />
+                  <span><a href="tel:+919990976501" className="hover:underline">+91 99909 76501</a>
+                    <span className="text-white/50 mx-2">/</span>
+                    <a href="tel:+919582415452" className="hover:underline">+91 95824 15452</a></span></li>
+                <li className="flex gap-3"><Mail size={18} className="text-white shrink-0 mt-0.5" />
+                  <a href="mailto:newspathh@gmail.com" className="hover:underline">newspathh@gmail.com</a></li>
+                <li className="flex gap-3"><Globe size={18} className="text-white shrink-0 mt-0.5" />
+                  <a href="https://www.newspathh.com" target="_blank" rel="noopener noreferrer" className="hover:underline">www.newspathh.com</a></li>
               </ul>
 
               <div className="mt-10 flex flex-wrap gap-3">
-                <a href={CAMPAIGN_HREF} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                <a href={CAMPAIGN_HREF} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-ink shadow-lift hover:-translate-y-0.5 transition">
                   Plan a campaign <ArrowUpRight size={18} />
                 </a>
-                <a href="tel:+919990976501" className="btn-ghost"><Phone size={15} /> Call the team</a>
+                <a href="tel:+919990976501" className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur hover:bg-white/20 transition"><Phone size={15} /> Call the team</a>
               </div>
             </div>
           </div>

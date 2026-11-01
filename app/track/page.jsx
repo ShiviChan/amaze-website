@@ -9,24 +9,24 @@ export default function TrackPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "Track", href: "/track" }]} />
-      <section className="relative pt-12 pb-20 overflow-hidden grid-bg">
+      <section className="relative -mt-24 pt-36 pb-20 overflow-hidden mesh-bg">
         <div className="absolute inset-0 bg-radial-fade pointer-events-none" />
         <div className="container-x relative z-10 text-center">
           <FadeIn>
             <div className="inline-flex eyebrow mb-8 mx-auto justify-center">Track your shipment</div>
           </FadeIn>
-          <h1 className="font-display text-[12vw] md:text-[7vw] leading-[0.95] tracking-tightest text-balance">
+          <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tightest text-balance">
             <motion.span initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }} className="block">
               Where is my
             </motion.span>
             <motion.span initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }} className="italic text-brand">
+              transition={{ duration: 0.8, delay: 0.15 }} className="text-gradient">
               parcel?
             </motion.span>
           </h1>
           <FadeIn delay={0.4}>
-            <p className="mt-10 max-w-xl mx-auto text-lg text-white/65">
+            <p className="mt-10 max-w-xl mx-auto text-lg text-slate-600">
               Enter your AWB / waybill number. Live updates from every Amaze hub, every courier partner.
             </p>
           </FadeIn>

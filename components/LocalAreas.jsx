@@ -1,56 +1,72 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Truck, Building2, PackageCheck } from "lucide-react";
+import { MapPin, Truck, Building2, PackageCheck, Navigation } from "lucide-react";
 import FadeIn from "./FadeIn";
 
-const primaryAreas = [
-  { city: "Delhi", desc: "Same-day intracity delivery across central, west, south, east and north Delhi. Hub at Patparganj plus city-wide last-mile fleet." },
-  { city: "Noida", desc: "HQ at i-Thum Tower, Sector-62. Direct pickups across Noida and Greater Noida — sectors 1 through 168, plus the Yamuna Expressway industrial belt." },
-  { city: "Ghaziabad", desc: "Door pickup and last-mile delivery across Ghaziabad — Indirapuram, Vaishali, Vasundhara, Crossings Republik, Raj Nagar Extension, Modinagar and beyond." },
-  { city: "Gurugram", desc: "Cyber City to Sohna Road — full intracity coverage for D2C, FMCG and quick-commerce brands operating out of Gurugram." },
-  { city: "Faridabad", desc: "End-to-end last-mile and middle-mile across Faridabad, Ballabhgarh, NIT and the industrial belt — connected to our Noida HQ." },
-  { city: "Delhi NCR (Wider)", desc: "Single freight network across Delhi NCR — Noida, Greater Noida, Ghaziabad, Gurugram, Faridabad. One partner, one SLA." },
+// Pan-India coverage. Numbers are network-wide totals from the Clinship platform (no client-level data).
+const coverage = [
+  { v: "6,500+", l: "Pin codes delivered to" },
+  { v: "1,600+", l: "Cities & towns" },
+  { v: "30+", l: "States & UTs" },
+];
+
+const regions = [
+  { region: "North India", cities: "Delhi NCR, Noida (HQ), Gurugram, Ghaziabad, Faridabad, Chandigarh, Ludhiana, Jaipur, Dehradun, Shimla", desc: "Our home turf — dense same-day and next-day networks across Delhi NCR, Punjab, Haryana, UP, Uttarakhand and the hill states." },
+  { region: "West India", cities: "Mumbai, Pune, Ahmedabad, Surat, Vadodara, Nagpur, Goa", desc: "Metro and tier-2 coverage across Maharashtra, Gujarat and Goa for D2C, FMCG and marketplace brands." },
+  { region: "South India", cities: "Bengaluru, Chennai, Hyderabad, Kochi, Coimbatore, Visakhapatnam", desc: "Line-haul from North hubs plus last-mile across Karnataka, Tamil Nadu, Telangana, Andhra Pradesh and Kerala." },
+  { region: "East India", cities: "Kolkata, Bhubaneswar, Patna, Ranchi", desc: "Reliable lanes into West Bengal, Odisha, Bihar and Jharkhand with consolidated line-haul." },
+  { region: "North-East", cities: "Guwahati, Shillong, Agartala, Gangtok, Itanagar, Aizawl", desc: "Hard-to-reach pin codes across Assam, Meghalaya, Tripura, Sikkim, Arunachal and Mizoram — delivered, not deferred." },
+  { region: "Central India", cities: "Indore, Bhopal, Raipur, Lucknow, Kanpur", desc: "Growing tier-2 and tier-3 demand across Madhya Pradesh, Chhattisgarh and Uttar Pradesh." },
 ];
 
 const services = [
-  { icon: Truck, label: "Transport company in Delhi NCR" },
-  { icon: Building2, label: "Warehousing in Noida & Ghaziabad" },
-  { icon: PackageCheck, label: "Last-mile delivery across NCR" },
-  { icon: MapPin, label: "Pin-code coverage 99%+" },
+  { icon: Truck, label: "Pan-India line-haul" },
+  { icon: Building2, label: "Warehousing in Noida & NCR" },
+  { icon: PackageCheck, label: "Last-mile in every metro" },
+  { icon: Navigation, label: "Tier-2 & tier-3 reach" },
 ];
 
 export default function LocalAreas() {
   return (
-    <section className="relative py-28 border-y border-white/10 overflow-hidden">
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[400px] w-[1000px] rounded-full bg-brand/10 blur-[120px] pointer-events-none" />
+    <section className="relative py-24 md:py-28 overflow-hidden mesh-soft">
       <div className="container-x relative z-10">
-        <div className="grid lg:grid-cols-12 gap-10 mb-16">
+        <div className="grid lg:grid-cols-12 gap-10 mb-12">
           <FadeIn className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-1.5 text-xs uppercase tracking-[0.2em] text-brand mb-6">
-              <MapPin size={12} /> Local Coverage
-            </div>
-            <h2 className="font-display text-5xl md:text-6xl tracking-tight leading-[0.95] text-balance">
-              Your <span className="italic text-brand">logistics partner</span><br />across Delhi NCR.
+            <div className="eyebrow mb-6"><MapPin size={12} /> Pan-India Coverage</div>
+            <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight leading-[1.05] text-ink text-balance">
+              Your <span className="text-gradient">logistics partner</span> across India.
             </h2>
           </FadeIn>
-          <FadeIn delay={0.2} className="lg:col-span-5 lg:pt-16">
-            <p className="text-white/65 leading-relaxed">
-              Headquartered in Noida with daily operations across Delhi, Ghaziabad, Gurugram and Faridabad — Amaze Solutions is the tech-first transport and logistics company powering D2C and enterprise fulfilment in the National Capital Region.
+          <FadeIn delay={0.2} className="lg:col-span-5 lg:pt-14">
+            <p className="text-slate-600 text-lg leading-relaxed">
+              Headquartered in Noida, Delhi NCR — and shipping to every corner of the country. From metros to the North-East, Amaze moves D2C and enterprise parcels across India on one network, one dashboard and one SLA.
             </p>
           </FadeIn>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
-          {primaryAreas.map((a, i) => (
-            <FadeIn key={a.city} delay={(i % 3) * 0.08}>
+        <FadeIn>
+          <div className="mb-10 grid grid-cols-3 gap-3 md:gap-5">
+            {coverage.map((c) => (
+              <div key={c.l} className="card p-5 md:p-7 text-center">
+                <div className="font-display font-extrabold text-3xl md:text-5xl text-gradient">{c.v}</div>
+                <div className="mt-1 text-xs md:text-sm text-slate-500">{c.l}</div>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mb-10">
+          {regions.map((a, i) => (
+            <FadeIn key={a.region} delay={(i % 3) * 0.08}>
               <motion.article whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group relative h-full p-6 rounded-2xl border border-white/10 hover:border-brand/40 hover:bg-brand/5 transition-all">
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="font-display text-2xl text-white group-hover:text-brand transition">{a.city}</h3>
-                  <MapPin size={18} className="text-brand/60" />
+                className="group relative h-full p-6 card hover:shadow-lift transition-shadow">
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="font-display font-bold text-xl text-ink group-hover:text-brand transition">{a.region}</h3>
+                  <div className="h-8 w-8 rounded-full bg-brand-50 grid place-items-center"><MapPin size={15} className="text-brand" /></div>
                 </div>
-                <p className="text-white/55 text-sm leading-relaxed">{a.desc}</p>
+                <p className="text-slate-600 text-sm leading-relaxed">{a.desc}</p>
+                <p className="mt-3 text-xs font-medium text-slate-500 leading-relaxed">{a.cities}</p>
               </motion.article>
             </FadeIn>
           ))}
@@ -61,9 +77,9 @@ export default function LocalAreas() {
             {services.map((s) => {
               const Icon = s.icon;
               return (
-                <div key={s.label} className="flex items-center gap-3 px-4 py-3 rounded-xl border border-white/10 bg-ink/40">
+                <div key={s.label} className="flex items-center gap-3 px-4 py-3 rounded-2xl border border-slate-200/70 bg-white/80 shadow-soft">
                   <Icon size={16} className="text-brand shrink-0" />
-                  <span className="text-sm text-white/80 leading-tight">{s.label}</span>
+                  <span className="text-sm font-medium text-slate-700 leading-tight">{s.label}</span>
                 </div>
               );
             })}

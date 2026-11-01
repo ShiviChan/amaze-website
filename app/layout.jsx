@@ -1,12 +1,13 @@
 import "./globals.css";
-import { Inter, Instrument_Serif } from "next/font/google";
+import Script from "next/script";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
-import { SITE_URL, absoluteUrl } from "@/lib/site";
+import { SITE_URL, absoluteUrl, GA_MEASUREMENT_ID, GOOGLE_SITE_VERIFICATION } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const display = Instrument_Serif({ subsets: ["latin"], weight: "400", variable: "--font-display", display: "swap" });
+const display = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-display", display: "swap" });
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -50,7 +51,7 @@ export const metadata = {
     siteName: "Amaze Solutions",
     title: "Amaze Solutions — AI-Powered Logistics & SaaS Platform",
     description:
-      "Tech-first logistics. AI for RTO reduction, label printing, order visibility & Cx automation. Trusted by Urbanic, Modicare. Built on AWS.",
+      "Tech-first logistics. AI for RTO reduction, label printing, order visibility & Cx automation. Trusted by Urbanic, Modicare. Built for enterprise scale.",
   },
   twitter: {
     card: "summary_large_image",
@@ -64,6 +65,7 @@ export const metadata = {
   },
   icons: { icon: "/icon.svg" },
   category: "logistics",
+  ...(GOOGLE_SITE_VERIFICATION ? { verification: { google: GOOGLE_SITE_VERIFICATION } } : {}),
 };
 
 const jsonLd = {
@@ -113,7 +115,6 @@ const jsonLd = {
       contactPoint: [
         {
           "@type": "ContactPoint",
-          telephone: "+91-96760-20374",
           contactType: "customer service",
           email: "riteshsr@asnmcare.com",
           areaServed: ["IN", "Delhi NCR"],
@@ -138,7 +139,7 @@ const jsonLd = {
       knowsAbout: [
         "Last-mile delivery", "Reverse logistics", "Warehousing",
         "Multi-courier aggregation", "Label printing", "RTO reduction",
-        "Supply chain automation", "Logistics SaaS", "AWS infrastructure",
+        "Supply chain automation", "Logistics SaaS", "Cloud logistics software",
       ],
     },
     {
@@ -158,7 +159,23 @@ export default function RootLayout({ children }) {
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body className="font-sans bg-ink text-cream min-h-screen overflow-x-hidden">
+      <body className="font-sans bg-canvas text-ink min-h-screen overflow-x-hidden">
+        {GA_MEASUREMENT_ID ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        ) : null}
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-brand focus:text-white">
           Skip to content
         </a>

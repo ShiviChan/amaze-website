@@ -23,11 +23,11 @@ export default function ServicesPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: "Services", href: "/services" }]} />
-      <section className="relative pt-12 pb-20 overflow-hidden grid-bg">
+      <section className="relative -mt-24 pt-36 pb-20 overflow-hidden mesh-bg">
         <div className="absolute inset-0 bg-radial-fade pointer-events-none" />
         <div className="container-x relative z-10">
           <FadeIn><div className="eyebrow mb-8">What we do</div></FadeIn>
-          <h1 className="font-display text-[12vw] md:text-[8vw] leading-[0.95] tracking-tightest text-balance max-w-5xl">
+          <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tightest text-balance max-w-5xl">
             {"One stop. Every".split(" ").map((w, i) => (
               <span key={i} className="inline-block overflow-hidden mr-[0.2em]">
                 <motion.span initial={{ y: "110%" }} animate={{ y: "0%" }}
@@ -37,34 +37,34 @@ export default function ServicesPage() {
             ))}
             <br />
             <motion.span initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }} className="italic text-brand">
+              transition={{ delay: 0.5, duration: 0.8 }} className="text-gradient">
               freight problem.
             </motion.span>
           </h1>
           <FadeIn delay={0.6}>
-            <p className="mt-12 max-w-2xl text-xl text-white/70 leading-relaxed">
+            <p className="mt-12 max-w-2xl text-xl text-slate-600 leading-relaxed">
               From the first kilometer to the last, from manual freight to API-driven dispatch — Amaze provides the full stack of logistics services in one place.
             </p>
           </FadeIn>
         </div>
       </section>
 
-      <section className="py-28 border-t border-white/10">
+      <section className="py-28 border-t border-slate-200">
         <div className="container-x grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
               <FadeIn key={s.title} delay={(i % 3) * 0.1}>
                 <motion.div whileHover={{ y: -6 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group relative h-full p-8 rounded-2xl glass overflow-hidden">
+                  className="group relative h-full p-8 rounded-3xl glass overflow-hidden">
                   <div className="absolute -top-20 -right-20 h-48 w-48 rounded-full bg-brand/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">
                     <div className="h-12 w-12 rounded-xl bg-brand/10 border border-brand/30 grid place-items-center text-brand mb-6 group-hover:bg-brand group-hover:text-white transition-colors">
                       <Icon size={22} />
                     </div>
-                    <h3 className="text-2xl font-medium text-white mb-3">{s.title}</h3>
-                    <p className="text-white/60 leading-relaxed mb-6">{s.body}</p>
-                    <ul className="space-y-2 text-sm text-white/70">
+                    <h3 className="text-2xl font-medium text-ink mb-3">{s.title}</h3>
+                    <p className="text-slate-600 leading-relaxed mb-6">{s.body}</p>
+                    <ul className="space-y-2 text-sm text-slate-600">
                       {s.bullets.map((b) => (
                         <li key={b} className="flex items-center gap-2">
                           <span className="h-1 w-1 rounded-full bg-brand" />{b}
@@ -79,12 +79,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-28 border-y border-white/10 bg-ink-800/40">
+      <section className="py-28 border-y border-slate-200 bg-white">
         <div className="container-x">
           <FadeIn>
             <div className="eyebrow mb-6">How we work</div>
-            <h2 className="font-display text-5xl md:text-6xl tracking-tight max-w-3xl text-balance leading-[0.95]">
-              From quote to delivery, <span className="italic text-brand">simplified.</span>
+            <h2 className="font-display font-extrabold text-5xl md:text-6xl tracking-tight max-w-3xl text-balance leading-[1.05]">
+              From quote to delivery, <span className="text-gradient">simplified.</span>
             </h2>
           </FadeIn>
           <div className="mt-16 grid md:grid-cols-4 gap-6">
@@ -95,10 +95,10 @@ export default function ServicesPage() {
               { n: "04", t: "Track to delivery", b: "Live updates till the last mile." },
             ].map((step, i) => (
               <FadeIn key={step.n} delay={i * 0.08}>
-                <div className="relative h-full p-8 rounded-2xl border border-white/10 hover:border-brand/40 transition group">
-                  <div className="font-display text-6xl text-white/10 group-hover:text-brand/40 transition-colors mb-6">{step.n}</div>
-                  <h3 className="text-xl font-medium text-white mb-2">{step.t}</h3>
-                  <p className="text-white/55 text-sm leading-relaxed">{step.b}</p>
+                <div className="relative h-full p-8 rounded-3xl border border-slate-200/70 bg-white shadow-soft hover:border-brand/40 transition group">
+                  <div className="font-display font-extrabold text-6xl text-slate-200 group-hover:text-brand/40 transition-colors mb-6">{step.n}</div>
+                  <h3 className="text-xl font-medium text-ink mb-2">{step.t}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{step.b}</p>
                 </div>
               </FadeIn>
             ))}
