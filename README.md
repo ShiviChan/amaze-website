@@ -69,7 +69,6 @@ Vercel issues + renews SSL automatically.
 | `/services` | 9 logistics service cards + 4-step process |
 | `/about` | Founder section, mission/vision/values, timeline, team |
 | `/track` | AWB / waybill tracking input + timeline result |
-| `/insights` | Blog placeholder with 3 starter articles |
 | `/contact` | Form (opens Gmail), HQ details, 50+ cities, careers |
 | `/404` | Branded not-found page |
 
@@ -95,8 +94,7 @@ amaze-website/
 │   ├── platform/ (page + layout)
 │   ├── services/ (page + layout)
 │   ├── contact/ (page + layout)
-│   ├── track/ (page + layout)
-│   └── insights/ (page + layout)
+│   └── track/ (page + layout)
 │
 ├── components/
 │   ├── Navbar.jsx               # Sticky nav + mobile sheet
@@ -144,7 +142,7 @@ amaze-website/
 ## SEO foundation (already wired)
 
 - **Per-page metadata** — every route has unique title/description/OG via route layouts.
-- **JSON-LD schemas** — `Organization`, `LocalBusiness`, `Service`, `WebSite`, `FAQPage` (on home), `BreadcrumbList` (on inner pages), `Blog` + `BlogPosting` (on /insights), `Person` (founder).
+- **JSON-LD schemas** — `Organization`, `LocalBusiness`, `Service`, `WebSite`, `FAQPage` (on home), `BreadcrumbList` (on inner pages), `Person` (founder).
 - **Local SEO** — `LocalBusiness` schema with Noida HQ address + geo coords + `areaServed` array including Delhi, Ghaziabad, Noida, Gurugram, Faridabad, Delhi NCR. Visible `LocalAreas` content section reinforces these terms in body text.
 - **Dynamic OG image** — `app/opengraph-image.jsx` generates a branded PNG for every social share.
 - **PWA manifest + Apple touch icon** — installable.
@@ -159,7 +157,6 @@ amaze-website/
 2. Get listed on JustDial, Sulekha, IndiaMart, Yellow Pages.
 3. Add Amaze to Urbanic / Modicare partner pages if possible.
 4. Submit sitemap to Google Search Console once deployed.
-5. Publish real articles on /insights every 1–2 weeks.
 
 Realistic ranking timeline: 3–6 months after deploy for medium-competition terms, 6–12+ months for "logistics company Delhi/Ghaziabad" against giants like Delhivery.
 
@@ -186,7 +183,6 @@ Realistic ranking timeline: 3–6 months after deploy for medium-competition ter
 ### Nice to have
 - [ ] Replace text wordmarks in `components/Partners.jsx` with real Urbanic + Modicare SVG logos (drop into `public/partners/`)
 - [ ] Real customer testimonial quotes in `components/Testimonials.jsx`
-- [ ] Write actual /insights articles (the 3 cards link to `/insights/[slug]` which currently 404s)
 - [ ] Add Google Analytics or Plausible
 
 ---

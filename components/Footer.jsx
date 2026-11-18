@@ -43,7 +43,6 @@ export default function Footer() {
             <li><Link href="/platform" className="hover:text-brand transition">Clinship Platform</Link></li>
             <li><Link href="/services" className="hover:text-brand transition">3PL Services</Link></li>
             <li><Link href="/media-marketing" className="hover:text-brand transition">Media And Marketing</Link></li>
-            <li><Link href="/insights" className="hover:text-brand transition">Insights</Link></li>
             <li><Link href="/track" className="hover:text-brand transition">Track Shipment</Link></li>
             <li><Link href="/about" className="hover:text-brand transition">About</Link></li>
             <li><Link href="/contact" className="hover:text-brand transition">Contact</Link></li>
