@@ -45,7 +45,7 @@ export default function ViewfinderHero() {
 
           <h1 className="flex flex-col gap-12 font-deva font-bold text-[13vw] sm:text-7xl xl:text-[5.6rem] leading-[1.8] tracking-normal text-ink">
             ख़बर। जनहित।
-            <span className="block whitespace-nowrap text-[0.8em] text-gradient pb-2">ज़मीनी हक़ीक़त।</span>
+            <span className="block whitespace-nowrap text-[0.8em] text-gradient pt-[0.25em] pb-2">ज़मीनी हक़ीक़त।</span>
           </h1>
           <p className="mt-5 font-display font-bold text-2xl md:text-3xl text-slate-700">
             News, public interest and ground reality, in Hindi.
