@@ -43,7 +43,7 @@ export default function ViewfinderHero() {
             <span className="text-sm font-medium text-slate-600">Media and marketing, through Newspath Bharat</span>
           </div>
 
-          <h1 className="flex flex-col gap-12 font-deva font-bold text-[13vw] sm:text-7xl xl:text-[5.6rem] leading-[1.8] tracking-normal text-ink">
+          <h1 className="flex flex-col gap-4 font-deva font-bold text-[13vw] sm:text-7xl xl:text-[5.6rem] leading-[1.8] tracking-normal text-ink">
             ख़बर। जनहित।
             <span className="block whitespace-nowrap text-[0.8em] text-gradient pt-[0.25em] pb-2">ज़मीनी हक़ीक़त।</span>
           </h1>
